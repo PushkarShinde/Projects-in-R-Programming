@@ -1,3 +1,3 @@
 # Python-Projects
-## Here's the list of my Python Projects I worked upon:
+## Here's the list of all the Python Projects I worked upon:
 ### 1. The Love Calculator
