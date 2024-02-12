@@ -6,6 +6,11 @@ Welcome to my R programming projects repository! Here, you'll find a collection 
 
 - [Project 1: Heart Weight Prediction Model using R](https://github.com/PushkarShinde/Projects-in-R-Programming/blob/main/README.md#project-1-heart-weight-prediction-model-using-r)
 
+
+![Project Image](https://media4.giphy.com/media/rGlAZysKBcjRCkAX7S/200.gif?cid=790b7611pzt29kvcmyvotjlnn9z6hpos75dliug9dgtp7mlp&rid=200.gif&ct=g)
+
+
+
 ## Project 1: Heart Weight Prediction Model using R
 
 ### Description: 
