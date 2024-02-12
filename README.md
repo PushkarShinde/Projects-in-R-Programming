@@ -23,9 +23,9 @@ Results:
 Dataset: The Cats dataset used in this project is available in the `MASS` package of CRAN. For more information about the dataset, refer to the [documentation](https://cran.r-project.org/web/packages/MASS/MASS.pdf).
 
 
-### Source Code: [Link](Heart weight prediction model from 'Cats' dataset.R)
+### Source Code: [Link](https://github.com/PushkarShinde/Projects-in-R-Programming/blob/main/Heart%20weight%20prediction%20model%20using%20R%20source%20code.R)
 
-### Project Cloud: [Link](https://posit.cloud/content/7574627)
+### HTML File: [Link](https://posit.cloud/content/7574627)
 
 
 ## License
