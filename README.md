@@ -4,7 +4,7 @@ Welcome to my R programming projects repository! Here, you'll find a collection 
 
 ## Table of Contents
 
-- [Project 1: Heart Weight Prediction Model using R](Project 1: Heart Weight Prediction Model using R)
+- [Project 1: Heart Weight Prediction Model using R](https://github.com/PushkarShinde/Projects-in-R-Programming/blob/main/README.md#project-1-heart-weight-prediction-model-using-r)
 
 ## Project 1: Heart Weight Prediction Model using R
 
