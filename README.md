@@ -21,13 +21,11 @@ Dataset: The Cats dataset used in this project is available in the `MASS` packag
 ### Source Code: [Link](https://posit.cloud/content/7574627)
 
 
-
-## Contributing
-
-If you have any suggestions or improvements, feel free to open an issue or submit a pull request.
-
 ## License
 
 I got the idea for Project 1 from an article on Medium, titled [R Programming ..Beginner Project 2](https://medium.com/@satishmishra91/r-programming-beginner-project-2-55d9b6fa8da9).
 However there are some errors in the code provided by the admin of the article and also the instructions are not beginner friendly, hence you can refer to the code file provided by me in the repository. Best Regards!
 
+## Contributing
+
+If you have any suggestions or improvements, feel free to open an issue or submit a pull request.
