@@ -9,14 +9,13 @@ data("cats")
 ## using head() to view content of data
 head(cats)
 
-## to see the complete dataset
+## To see the complete dataset
 View(cats)
 
-## As the data is inbuilt so we don't need to read it separately , we will analyze the data set and then we can split it in two parts as train and test.
+## As the data is inbuilt we don't need to read it separately, we will analyze the data set and then we can split it into two parts train and test.
 
 ## Step1: Analyse the data set!
-
-### identifying number of rows and columns
+### Identifying the number of rows and columns
 dim(cats)
 nrow(cats)
 ncol(cats)
@@ -25,7 +24,7 @@ ncol(cats)
 sum(is.na(cats))
 which(is.na(cats))
 
-### Checking structure and summary of the dataset
+### Checking the structure and summary of the dataset
 str(cats)
 summary(cats)
 
@@ -35,18 +34,17 @@ sapply(cats,class)
 ### Finding the correlation between Body 'weight' and 'Heart weight'
 plot(cats$Bwt ,cats$Hwt)
 
-### Replacing blanks or spaces with NA, even-though we have none!
+### Replacing blanks or spaces with NA, even though we have none!
 cats[cats==" "] <- NA
 
 ## Step 2: visualizing the data
-## Finding correlations between 'Heart weight' and 'sex' of cats using visual plots
-
+### Finding correlations between 'Heart weight' and 'sex' of cats using visual plots
 ### Installing package ggplot2
 install.packages("ggplot2")
 ### Load the ggplot2 library for plotting
 library(ggplot2)
 
-## Create a box plot and violin plot to visualize the relationship between 'Hwt' and 'Sex'
+### Create a box plot and violin plot to visualize the relationship between 'Hwt' and 'Sex'
 ### Box plot
 ggplot(cats, aes(x = Sex, y = Hwt)) +
   geom_boxplot() +
@@ -58,7 +56,7 @@ ggplot(cats, aes(x = Sex, y = Hwt)) +
   labs(x = "Sex", y = "Heart Weight")
 
 
-### creating a new data set cats2 so we don’t alter the original cats dataset
+### creating a new data set cats2 so we don’t alter the original cats' dataset
 cats2 <- cats
 dim(cats2)
 View(cats2)
@@ -67,7 +65,7 @@ View(cats2)
 ### Generating a random sample of indices representing the training set from the dataset 'cats2'
 train_ind <- sample.int(n = nrow(cats2), size = floor(0.75 * nrow(cats2)), replace = FALSE)
 
-### splitting the dataset cats2 into a training set and a test set based on the indices generated earlier
+### Splitting the dataset cats2 into a training set and a test set based on the indices generated earlier
 train <- cat_c[train_ind,]
 test <- cat_c[-train_ind,]
 
@@ -77,8 +75,7 @@ head(test,10)
 dim(train)
 dim(test)
 
-## Step 3: Finding Correlation between variables
-
+## Step 4: Finding Correlation between variables
 ### Attaching train data
 attach(train)
 
@@ -91,16 +88,16 @@ correlation_test <- cor.test(cat_c$Hwt, cat_c$Bwt)
 
 ### Print the correlation test result
 print(correlation_test)
-### There is strong positive correlation of ~ 80%
+### There is a strong positive correlation of ~ 80%
 
-## Step 4: Performing regression analysis
+## Step 5: Performing regression analysis
 ### Conducting linear regression analysis
 linear_model1 <- with(train, lm(Hwt ~ Bwt + Sex))
-### As the variable sex is not significant lets drop it
+### As the variable sex is not significant let's drop it
 linear_model1 <- with(train, lm(Hwt ~ Bwt))
 summary(linear_model1)
 
-### plot of linear_model ,it helps to understand the accuracy and to identify the hidden behaviour of data
+### plot of linear_model,it helps to understand the accuracy and to identify the hidden behavior of data
 plot(linear_model1) 
 # Analyzing all 4 plots
 
@@ -111,7 +108,7 @@ Hwt_Predicted <- predict(linear_model1, test, method = "class")
 ### Inspecting the predicted and actual values of 'Hwt' side by side using a data frame view
 View(data.frame(Hwt_Predicted, test$Hwt))
 
-### Adding the Predicted Values to Test dataset
+### Adding the Predicted Values to the Test dataset
 test <- cbind(test, Hwt_Predicted)
 
 View(test)
