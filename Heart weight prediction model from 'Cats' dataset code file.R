@@ -7,10 +7,7 @@ library(MASS)
 data("cats")
 
 ## using head() to view content of data
-head(cats)
-
-## To see the complete dataset
-View(cats)
+head(cats,10)
 
 ## As the data is inbuilt we don't need to read it separately, we will analyze the data set and then we can split it into two parts train and test.
 
@@ -59,15 +56,15 @@ ggplot(cats, aes(x = Sex, y = Hwt)) +
 ### creating a new data set cats2 so we don’t alter the original cats' dataset
 cats2 <- cats
 dim(cats2)
-View(cats2)
+head(cats2,10)
 
 ## Step 3: Splitting the dataset into Test and Train data
 ### Generating a random sample of indices representing the training set from the dataset 'cats2'
 train_ind <- sample.int(n = nrow(cats2), size = floor(0.75 * nrow(cats2)), replace = FALSE)
 
 ### Splitting the dataset cats2 into a training set and a test set based on the indices generated earlier
-train <- cat_c[train_ind,]
-test <- cat_c[-train_ind,]
+train <- cats2[train_ind,]
+test <- cats2[-train_ind,]
 
 ### Observing the test and train data
 head(train,10)
@@ -81,10 +78,10 @@ attach(train)
 
 ### plotting the relationship between 'Hwt' and 'Bwt' and then perform a correlation test between the two variables
 ### Plotting Heart Weight against Body Weight
-plot(cat_c$Hwt, cat_c$Bwt, xlab = "Heart Weight", ylab = "Body Weight", main = "Heart vs Body")
+plot(cats2$Hwt, cats2$Bwt, xlab = "Heart Weight", ylab = "Body Weight", main = "Heart vs Body")
 
 ### Perform a correlation test
-correlation_test <- cor.test(cat_c$Hwt, cat_c$Bwt)
+correlation_test <- cor.test(cats2$Hwt, cats2$Bwt)
 
 ### Print the correlation test result
 print(correlation_test)
@@ -97,21 +94,44 @@ linear_model1 <- with(train, lm(Hwt ~ Bwt + Sex))
 linear_model1 <- with(train, lm(Hwt ~ Bwt))
 summary(linear_model1)
 
-### plot of linear_model,it helps to understand the accuracy and to identify the hidden behavior of data
+### plot of linear_model,it helps to understand the accuracy and to identify the hidden behavior of data and analyzing all 4 plots
 plot(linear_model1) 
-# Analyzing all 4 plots
 
-## Step 5: Yay! Let's predict
+
+## Step 6: Yay! Let's predict
 ### Predicting values of 'Hwt' using the linear regression mode
 Hwt_Predicted <- predict(linear_model1, test, method = "class")
 
 ### Inspecting the predicted and actual values of 'Hwt' side by side using a data frame view
-View(data.frame(Hwt_Predicted, test$Hwt))
+head(data.frame(Hwt_Predicted, test$Hwt),10)
 
 ### Adding the Predicted Values to the Test dataset
 test <- cbind(test, Hwt_Predicted)
+head(test,10)
 
-View(test)
+## Step 7: Let's proceed with calculating the prediction accuracy
+### Extract Predicted and Actual Values
+predicted_values <- test$Hwt_Predicted
+actual_values <- test$Hwt
+
+### Calculating Mean Absolute Error (MAE)
+mae <- mean(abs(predicted_values - actual_values))
+
+### Calculating Root Mean Squared Error (RMSE)
+rmse <- sqrt(mean((predicted_values - actual_values)^2))
+
+### Calculating Root Mean Squared Error (RMSE)
+rmse <- sqrt(mean((predicted_values - actual_values)^2))
+
+### Calculating R-squared (R²)
+rsquared <- cor(predicted_values, actual_values)^2
+
+### Printing the evaluation metrics
+cat("Mean Absolute Error (MAE):", mae, "\n")
+cat("Root Mean Squared Error (RMSE):", rmse, "\n")
+cat("R-squared (R²):", rsquared, "\n")
+
+
 
 
 
